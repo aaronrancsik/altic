@@ -1,0 +1,56 @@
+pacman -Syy reflector
+reflector -c Hungary -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Syy
+lsblk
+mydev=sda
+blkdiscard -f /dev/"$mydev"
+parted /dev/"$mydev" mklabel gpt
+parted /dev/"$mydev" mkpart efi fat32 1MiB 261MiB
+parted /dev/"$mydev" set 1 esp on
+parted /dev/"$mydev" mkpart whitepart 261MiB 100%
+fdisk -l
+mkfs.btrfs -m single -d single /dev/"$mydev"2
+mount /dev/"$mydev"2 /mnt
+btrfs subvolume create /mnt/@root
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@log
+btrfs subvolume create /mnt/@pkg
+btrfs subvolume create /mnt/@tmp
+btrfs subvolume create /mnt/@smapshots
+umount /mnt 
+mount -o noatime,space_cache=v2,ssd,subvol=@root /dev/"$mydev"2 /mnt
+mkdir -p /mnt/{boot,home,var/log,var/cache/pacman/pkg,tmp,.snapshots}
+mount -o noatime,space_cache=v2,ssd,subvol=@home /dev/"$mydev"2 /mnt/home
+mount -o noatime,space_cache=v2,ssd,subvol=@snapshots /dev/"$mydev"2 /mnt/.snapshots
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@log /dev/"$mydev"2 /mnt/var/log
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@pkg /dev/"$mydev"2 /mnt/var/cache/pacman/pkg
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@tmp /dev/"$mydev"2 /mnt/tmp
+mount /dev/"$mydev"1 /mnt/boot
+pacstrap /mnt base linux linux-firmware neovim btrsf-progs
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroor /mnt
+timedatectl list-timezones | grep Budapest
+ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+hwclock --systohc
+nvim /etc/locale.gen
+myloc="en_US.UTF-8 UTF-8"
+sed -i "s/#$myloc/$myloc/" /etc/locale.gen
+myloc="hu_HU.UTF-8 UTF-8"
+sed -i "s/#$myloc/$myloc/" /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 >> /etc/locale.conf
+myhostn=blackz
+echo "$myhostn" > /etc/hostname
+printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\t$myhostn" >> /etc/hosts
+pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers zsh git reflector xdg-utils xdg-user-dirs bash-completion
+sed -i "s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf
+mkinitcpio -p linux
+passwd
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable NetworkManager
+myuser=aaron
+useradd -m -G wheel -s /bin/zsh "$myuser"
+passwd "$myuser"
+EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\s20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo
+
