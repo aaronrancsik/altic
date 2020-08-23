@@ -9,19 +9,19 @@ function int(){
 function loadkeys(){
     int "Press enter to load keys."
     echo "loadkeys()"
-    #if [ -n "$KEYS" ]; then loadkeys $KEYS; fi    
+    if [ -n "$KEYS" ]; then loadkeys $KEYS; fi    
 }
 
 function updateClock(){
     int "Press enter to update clock."
     echo "updateClock()"
-    #timedatectl set-ntp true
+    timedatectl set-ntp true
 }
 
 function prepare(){
     int "Press enter to install tmux."
     echo "prepare()"
-    #pacman -Syy tmux
+    pacman -Syy tmux
 }
 
 function main(){
