@@ -29,7 +29,7 @@ mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@tmp /dev/"$mydev"2 /mnt/tm
 mount /dev/"$mydev"1 /mnt/boot
 pacstrap /mnt base linux linux-firmware neovim btrfs-progs
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroor /mnt
+arch-chroot /mnt
 timedatectl list-timezones | grep Budapest
 ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 hwclock --systohc
@@ -54,4 +54,6 @@ myuser=aaron
 useradd -m -G wheel -s /bin/zsh "$myuser"
 passwd "$myuser"
 EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\s20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo
-
+exit
+umou0nt -a
+reboot
