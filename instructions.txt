@@ -27,7 +27,7 @@ mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@log /dev/"$mydev"2 /mnt/va
 mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@pkg /dev/"$mydev"2 /mnt/var/cache/pacman/pkg
 mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@tmp /dev/"$mydev"2 /mnt/tmp
 mount /dev/"$mydev"1 /mnt/boot
-pacstrap /mnt base linux linux-firmware neovim btrsf-progs
+pacstrap /mnt base linux linux-firmware neovim btrfs-progs
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroor /mnt
 timedatectl list-timezones | grep Budapest
