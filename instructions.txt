@@ -16,7 +16,7 @@ btrfs subvolume create /mnt/@home
 btrfs subvolume create /mnt/@log
 btrfs subvolume create /mnt/@pkg
 btrfs subvolume create /mnt/@tmp
-btrfs subvolume create /mnt/@smapshots
+btrfs subvolume create /mnt/@snapshots
 umount /mnt 
 mount -o noatime,space_cache=v2,ssd,subvol=@root /dev/"$mydev"2 /mnt
 mkdir -p /mnt/{boot,home,var/log,var/cache/pacman/pkg,tmp,.snapshots}
