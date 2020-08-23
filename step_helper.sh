@@ -11,7 +11,7 @@ function int(){
 def_msg="Type 'f' to continue"
 
 
-int "To start execute this: . ali "
+int "To start execute this: . ./ali "
 
 filename='instructions.txt'
 exec 4<$filename
