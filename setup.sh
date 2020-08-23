@@ -28,8 +28,6 @@ function main(){
     loadkeys
     updateClock
     prepare
-    alias next='tmux send-keys -t install:0.1 $'\n''
-    
     tmux new -s install \; split-window -d './step_helper.sh'
 }
 
