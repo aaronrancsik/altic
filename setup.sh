@@ -2,9 +2,7 @@
 
 KEYS=us
 
-function int(){
-    read -p "$1"
-}
+source ./lib.sh
 
 function myloadkeys(){
     int "Press enter to load keys."

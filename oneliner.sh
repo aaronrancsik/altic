@@ -1,8 +1,6 @@
 #!/usr/bin/env sh
 
-function int(){
-    read -p "$1"
-}
+source ./lib.sh
 
 int "Remove possible leftover 'aaronbooster' folder."
 rm -rf aaronbooster

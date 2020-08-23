@@ -4,9 +4,7 @@ function send2pane(){
     tmux send-keys -t install:0.0 "$1"
 }
 
-function int(){
-    read -p "$1"
-}
+source ./lib.sh
 
 def_msg="Type 'f' to continue"
 
