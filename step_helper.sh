@@ -8,7 +8,6 @@ source ./lib.sh
 
 def_msg="Type 'f' to continue"
 
-
 int "To start execute this: . ./ali "
 
 filename='instructions.txt'

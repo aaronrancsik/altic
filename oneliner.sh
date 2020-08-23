@@ -12,10 +12,10 @@ int "Change into 'aaronbooster' folder."
 cd aaronbooster
 
 int "Download scripts."
-curl --remote-name-all https://raw.githubusercontent.com/aaronrancsik/altic/master/{ali,instructions.txt,setup.sh,step_helper.sh}
+curl --remote-name-all https://raw.githubusercontent.com/aaronrancsik/altic/master/{ali,instructions.txt,setup.sh,step_helper.sh,lib.sh}
 
 int "Set permissions."
-chmod +x {setup,step_helper}.sh
+chmod +x {setup,step_helper,lib}.sh
 
 int "Execute the installer."
 ./setup.sh
