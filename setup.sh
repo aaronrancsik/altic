@@ -6,7 +6,7 @@ function int(){
     read -p "$1"
 }
 
-function loadkeys(){
+function myloadkeys(){
     int "Press enter to load keys."
     echo "loadkeys()"
     if [ -n "$KEYS" ]; then loadkeys $KEYS; fi    
@@ -25,7 +25,7 @@ function prepare(){
 }
 
 function main(){
-    loadkeys
+    myloadkeys
     updateClock
     prepare
     tmux new -s install \; split-window -d './step_helper.sh'
