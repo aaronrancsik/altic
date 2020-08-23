@@ -6,6 +6,7 @@ mydev=sda
 blkdiscard -f /dev/"$mydev"
 parted /dev/"$mydev" mklabel gpt
 parted /dev/"$mydev" mkpart efi fat32 1MiB 261MiB
+mkfs.fat -F32 /dev/"$mydev"1
 parted /dev/"$mydev" set 1 esp on
 parted /dev/"$mydev" mkpart whitepart 261MiB 100%
 fdisk -l
