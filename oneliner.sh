@@ -15,7 +15,7 @@ int "Download scripts."
 curl --remote-name-all https://raw.githubusercontent.com/aaronrancsik/altic/master/{ali,instructions.txt,setup.sh,step_helper.sh,lib.sh,tmux.conf}
 
 int "Set permissions."
-chmod +x setup.sh
+chmod +x {setup,step_helper}.sh
 
 int "Execute the installer."
 ./setup.sh
