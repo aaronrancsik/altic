@@ -26,7 +26,8 @@ function main(){
     myloadkeys
     updateClock
     prepare
-    tmux new -s install \; split-window -d './step_helper.sh'
+    int "Press enter to start tmux."
+    tmux -f tmux.conf new -s install \; split-window -d './step_helper.sh'
 }
 
 main $@

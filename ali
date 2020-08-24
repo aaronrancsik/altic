@@ -1,2 +1,0 @@
-alias f='tmux send-keys -t install:0.1 $'\''\n'\'' '
-f

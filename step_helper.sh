@@ -6,7 +6,7 @@ function send2pane(){
 
 source ./lib.sh
 
-def_msg="Type 'f' to continue"
+def_msg="Press Ctr-Space to load the next command."
 
 int "To start execute this: . ./ali "
 
