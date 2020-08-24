@@ -9,9 +9,9 @@
  * oneliner:<br/> 
  `curl -O https://raw.githubusercontent.com/aaronrancsik/altic/master/oneliner.sh && chmod +x oneliner.sh && ./oneliner.sh`
  * manually:
-  * 1 Clone this repo and cd in
-  * 2 `chmod +x setup.sh step_helper.sh`
-  * 3 `./setup.sh`
+   * 1 Clone this repo and cd in
+   * 2 `chmod +x setup.sh step_helper.sh`
+   * 3 `./setup.sh`
   
 ## Motivation, goals
 * Trying to keep the arch-way but faster.
