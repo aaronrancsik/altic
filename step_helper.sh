@@ -8,8 +8,6 @@ source ./lib.sh
 
 def_msg="Press Ctr-Space to load the next command."
 
-int "To start execute this: . ./ali "
-
 filename='instructions.txt'
 exec 4<$filename
 while read -u4 p ; do
