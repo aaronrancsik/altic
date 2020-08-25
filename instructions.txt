@@ -56,4 +56,3 @@ passwd "$myuser"
 EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\s20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo
 exit
 umou0nt -a
-reboot
