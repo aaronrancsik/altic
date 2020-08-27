@@ -5,18 +5,25 @@ KEYS=us
 source ./lib.sh
 
 function myloadkeys(){
-    int "loadkeys $KEYS [Y|n]"
-    loadkeys $KEYS
+    yesNoQuestion "exec: loadkeys $KEYS";
+    if [[ $? -eq "0" ]]; then
+        loadkeys $KEYS
+    fi
 }
 
 function updateClock(){
-    int "timedatectl set-ntp true [Y|n]"
-    timedatectl set-ntp true
+    yesNoQuestion "exec: timedatectl set-ntp true";
+    if [[ $? -eq "0" ]]; then
+        timedatectl set-ntp true
+    fi
+    
 }
 
 function installTmux(){
-    int "pacman -Syy tmux [Y|n]"
-    pacman -Syy tmux
+    yesNoQuestion "exec: pacman -Syy tmux";
+    if [[ $? -eq "0" ]]; then
+        pacman -Syy tmux    
+    fi
 }
 
 function main(){
@@ -24,8 +31,10 @@ function main(){
     myloadkeys
     updateClock
     installTmux
-    int "Start ALTIC Tmux session called 'install' [Y|n]"
-    tmux -f tmux.conf new -s install \; split-window -v -d './step_helper.sh'
+    yesNoQuestion "Start ALTIC Tmux session called 'install'"
+    if [[ $? -eq "0" ]]; then
+        tmux -f tmux.conf new -s install \; split-window -v -d './step_helper.sh'
+    fi
 }
 
 main $@

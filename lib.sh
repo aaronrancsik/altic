@@ -51,8 +51,6 @@ function printProgress(){
     local BAR_BEGIN=$( printf '%*s' "$SPACE" )
     BAR_BEGIN="${BAR_BEGIN// /▂}"
     
-    
-    
     local BAR_END=$(printf '%*s' $(( $TCOLS - ($SPACE + ${#STR}) )) )
     BAR_END="${BAR_END// /▂}"
     
@@ -70,7 +68,6 @@ function printProgress(){
     tput bold
     tput smul
     printf %s "${BAR:$PROGRES_NUMBER:$TCOLS}"
-    
     tput sgr 0
 }
 
@@ -80,10 +77,23 @@ function printfh3(){
 
     printf '%*s'"$1" $SPACE 
     printf '%*s' $(( $TCOLS - ( $SPACE + ${#1} ) ))
-
     tput sgr 0
 }
 
 function int(){
     read -p "$1"
+}
+
+function yesNoQuestion(){
+    local ans="a"
+    while [[ "$ans" != "Y" && "$ans" != "N" && "$ans" != ""  ]]; do
+        tput bold
+        printf "$1 [Y/n] " 
+        read ans
+        ans="${ans^^}" 
+    done
+    if [[ "$ans" == "Y" || "$ans" == "" ]]; then
+        return 0;
+    fi
+    return 1
 }
