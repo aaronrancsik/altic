@@ -52,6 +52,6 @@ systemctl enable NetworkManager #Enable network service.
 myuser=aaron #Select new user name.
 useradd -m -G wheel -s /bin/zsh "$myuser" #Create new user.
 passwd "$myuser" #Set password for new user.
-EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\s20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo #Uncomment Wheel's line to grant access to sudo with password.
+EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\x20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo #Uncomment Wheel's line to grant access to sudo with password.
 exit #Exit from chroot back to installer.
 umou0nt -a #Unmount all devices.
