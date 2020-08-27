@@ -1,58 +1,57 @@
-pacman -Syy reflector
-reflector -c Hungary -a 6 --sort rate --save /etc/pacman.d/mirrorlist
-pacman -Syy
-lsblk
-mydev=sda
-blkdiscard -f /dev/"$mydev"
-parted /dev/"$mydev" mklabel gpt
-parted /dev/"$mydev" mkpart efi fat32 1MiB 261MiB
-mkfs.fat -F32 /dev/"$mydev"1
-parted /dev/"$mydev" set 1 esp on
-parted /dev/"$mydev" mkpart whitepart 261MiB 100%
-fdisk -l
-mkfs.btrfs -m single -d single /dev/"$mydev"2
-mount /dev/"$mydev"2 /mnt
-btrfs subvolume create /mnt/@root
-btrfs subvolume create /mnt/@home
-btrfs subvolume create /mnt/@log
-btrfs subvolume create /mnt/@pkg
-btrfs subvolume create /mnt/@tmp
-btrfs subvolume create /mnt/@snapshots
-umount /mnt 
-mount -o noatime,space_cache=v2,ssd,subvol=@root /dev/"$mydev"2 /mnt
-mkdir -p /mnt/{boot,home,var/log,var/cache/pacman/pkg,tmp,.snapshots}
-mount -o noatime,space_cache=v2,ssd,subvol=@home /dev/"$mydev"2 /mnt/home
-mount -o noatime,space_cache=v2,ssd,subvol=@snapshots /dev/"$mydev"2 /mnt/.snapshots
-mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@log /dev/"$mydev"2 /mnt/var/log
-mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@pkg /dev/"$mydev"2 /mnt/var/cache/pacman/pkg
-mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@tmp /dev/"$mydev"2 /mnt/tmp
-mount /dev/"$mydev"1 /mnt/boot
-pacstrap /mnt base linux linux-firmware neovim btrfs-progs
-genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
-timedatectl list-timezones | grep Budapest
-ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
-hwclock --systohc
-nvim /etc/locale.gen
-myloc="en_US.UTF-8 UTF-8"
-sed -i "s/#$myloc/$myloc/" /etc/locale.gen
-myloc="hu_HU.UTF-8 UTF-8"
-sed -i "s/#$myloc/$myloc/" /etc/locale.gen
-locale-gen
-echo LANG=en_US.UTF-8 >> /etc/locale.conf
-myhostn=blackz
-echo "$myhostn" > /etc/hostname
-printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\t$myhostn" >> /etc/hosts
-pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers zsh git reflector xdg-utils xdg-user-dirs bash-completion
-sed -i "s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf
-mkinitcpio -p linux
-passwd
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
-systemctl enable NetworkManager
-myuser=aaron
-useradd -m -G wheel -s /bin/zsh "$myuser"
-passwd "$myuser"
-EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\s20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo
-exit
-umou0nt -a
+pacman -Syy reflector #Install reflector to rank mirrorlists.
+reflector -c Hungary -a 6 --sort rate --save /etc/pacman.d/mirrorlist #Set top 6 Hungarian server to mirrorlist file.
+pacman -Syy #Update database with the new mirrorlist.
+lsblk #List all block devices.
+mydev=sda #Select device for install target.
+blkdiscard -f /dev/"$mydev" #Trim selected device, ALL IT'S DATA WILL GONE.
+parted /dev/"$mydev" mklabel gpt #Create GPT partition table on selected device.
+parted /dev/"$mydev" mkpart efi fat32 1MiB 261MiB #Create the first partition, it will be the EFI partition.
+mkfs.fat -F32 /dev/"$mydev"1 #Create fat32 filesystem on the first partition.
+parted /dev/"$mydev" set 1 esp on #Set ESP flag on the first partition. 
+parted /dev/"$mydev" mkpart whitepart 261MiB 100% #Create secound partition on device use all the rest space.
+mkfs.btrfs -m single -d single /dev/"$mydev"2 #Create btrfs filesystem on secound partition.
+fdisk -l #List all partitions.
+mount /dev/"$mydev"2 /mnt #Mount btrfs partition for create subvolumes.
+btrfs subvolume create /mnt/@root #Create the root subvolume.
+btrfs subvolume create /mnt/@home #Create the home subvolume.
+btrfs subvolume create /mnt/@log #Create the log subvolume.
+btrfs subvolume create /mnt/@pkg #Create the pkg subvolume.
+btrfs subvolume create /mnt/@tmp #Create the tmp subvolume.
+btrfs subvolume create /mnt/@snapshots #Create the snapshots subvolume.
+umount /mnt #Unmount btrfs partition to mount subvolumes instead.
+mount -o noatime,space_cache=v2,ssd,subvol=@root /dev/"$mydev"2 /mnt #First mount root subvolume.
+mkdir -p /mnt/{boot,home,var/log,var/cache/pacman/pkg,tmp,.snapshots} #Create the folders for the other subvolumes.
+mount -o noatime,space_cache=v2,ssd,subvol=@home /dev/"$mydev"2 /mnt/home #Mount home subvolume.
+mount -o noatime,space_cache=v2,ssd,subvol=@snapshots /dev/"$mydev"2 /mnt/.snapshots #Mount snapshots subvolume.
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@log /dev/"$mydev"2 /mnt/var/log #Mount log subvolume.
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@pkg /dev/"$mydev"2 /mnt/var/cache/pacman/pkg #Mount pkg subvolume.
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@tmp /dev/"$mydev"2 /mnt/tmp #Mount tmp subvolume.
+mount /dev/"$mydev"1 /mnt/boot #Mount boot partition.
+pacstrap /mnt base linux linux-firmware neovim btrfs-progs #Install essential packages to selected new root directory. 
+genfstab -U /mnt >> /mnt/etc/fstab #Generate fstab file.
+arch-chroot /mnt #Change root to the installation.
+timedatectl list-timezones | grep Budapest #Query timezone for Budapest.
+ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime #Link Budapest timezone file to localtime.
+hwclock --systohc #Syncronize clock to hardware clock.
+myloc="en_US.UTF-8 UTF-8" #Select locale.
+sed -i "s/#$myloc/$myloc/" /etc/locale.gen #Uncomment selected in locale.gen
+myloc="hu_HU.UTF-8 UTF-8" #Select another locale.
+sed -i "s/#$myloc/$myloc/" /etc/locale.gen #Uncomment selected in locale.gen
+locale-gen #Generate locale.
+echo LANG=en_US.UTF-8 >> /etc/locale.conf #Set system locale.
+myhostn=blackz #Select a hostname.
+echo "$myhostn" > /etc/hostname #Set hostname.
+printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\t$myhostn" >> /etc/hosts #Write defaults to hosts file.
+pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers zsh git reflector xdg-utils xdg-user-dirs bash-completion #Install secondary essential packages.
+sed -i "s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf #Add btrfs hook to mkinitcpio.
+mkinitcpio -p linux #Create an initial ramdisk environment.
+passwd #Set root password.
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB #Install grub.
+grub-mkconfig -o /boot/grub/grub.cfg #Generate grub config.
+systemctl enable NetworkManager #Enable network service.
+myuser=aaron #Select new user name.
+useradd -m -G wheel -s /bin/zsh "$myuser" #Create new user.
+passwd "$myuser" #Set password for new user.
+EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\s20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo #Uncomment Wheel's line to grant access to sudo with password.
+exit #Exit from chroot back to installer.
+umou0nt -a #Unmount all devices.
