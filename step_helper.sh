@@ -2,19 +2,63 @@
 
 source ./lib.sh
 
-def_msg="Press Ctr-Space to continue."
+TCOLS=$(tput cols)
+CURRENT_FILENAME='instructions.txt'
 
-filename='instructions.txt'
-i="0"
-lines=$(wc -l < "$filename")
+NLINE=$(wc -l < "$CURRENT_FILENAME")
+i="1"
 
-while [ "$i" -le "$lines" ]; do
+function helpOut(){
+    printfh3 "Ctrl + Space   paste & move        ╔═╗╦ ╔╦╗╦╔═╗"
+    printfh3 "Ctrl +   ]     move next           ║ ║║  ║ ║║  "
+    printfh3 "Ctrl +   [     move back           ╠═╣║  ║ ║║  "
+    printfh3 "Ctrl +   j     paste highlighted   ╩ ╩╩═╝╩ ╩╚═╝"
+}
+
+
+
+function redraw() {
     clear
-    echo ""
-    echo "Last loaded command: $i"'/'"$lines"
-    (( i++ ))
-    int "$def_msg"
-    send2pane "$(sed $i'q;d' $filename)"
+
+    printProgress "$i" "$NLINE"
+
+    tput setaf 7
+    printf "      SCRIPT:"
+    tput sgr0
+    echo " $CURRENT_FILENAME"
+
+    tput setaf 7
+    printf "     COMMENT:"
+    tput sgr0
+    echo " $(sed $i'q;d' $CURRENT_FILENAME | sed 's|.*\#||')"
+    
+    HIGHLIGHTED="$(sed $i'q;d' $CURRENT_FILENAME | sed 's|\(.*\)#.*|\1|')"
+
+    tput setaf 7
+    printf " HIGHLIGHTED:"
+    tput sgr0
+    echo " $HIGHLIGHTED"
+    
+    verticalCenter
+    helpOut
+    
+    local ret
+    read ret
+
+    if [[ "$ret" == "p" ]]; then
+        (( i++ ))
+    elif [[ "$ret" == "m" && $i > 1 ]]; then
+        (( i-- ))
+    elif [[ "$ret" == "i" ]]; then
+        send2pane "$HIGHLIGHTED"
+    elif [[ "$ret" == "s" ]]; then
+        send2pane "$HIGHLIGHTED"
+        (( i++ ))
+    fi
+}
+
+while [ "$i" -le "$NLINE" ]; do
+    redraw
 done
 
-int "End loop"
+int "Everything done."
