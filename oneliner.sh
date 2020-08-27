@@ -1,20 +1,18 @@
 #!/usr/bin/env sh
 
-source ./lib.sh
-
-int "Remove possible leftover 'aaronbooster' folder."
+read -p "Remove possible leftover 'aaronbooster' folder."
 rm -rf aaronbooster
 
-int "Create new empty 'aaronbooster' folder."
+read -p "Create new empty 'aaronbooster' folder."
 mkdir aaronbooster
 
-int "Change into 'aaronbooster' folder."
+read -p "Change into 'aaronbooster' folder."
 cd aaronbooster
 
-int "Download scripts."
+read -p "Download scripts."
 curl --remote-name-all https://raw.githubusercontent.com/aaronrancsik/altic/master/{ali,instructions.txt,setup.sh,step_helper.sh,lib.sh,tmux.conf}
 
-int "Set permissions."
+read -p "Set permissions."
 chmod +x {setup,step_helper}.sh
 
 int "Execute the installer."
