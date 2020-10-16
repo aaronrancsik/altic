@@ -1,6 +1,6 @@
 ## Infos
 * A script which tell everything that does.
-* Every command will be executed by you, I just prepare these for you to press the enter or modify it.
+* Every command will be executed by you, it just prepare these for you to press the enter or modify it.
 * It's like following the wiki but much faster.
 * Balance between short and clean code.
 * Commands separated into one location so you can easily modify it to your needs.
