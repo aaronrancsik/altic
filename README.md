@@ -20,4 +20,4 @@
 
   
 ## Contrib
-This is a personal hobby project. I'm still pretty new to Linux and shell-script. Feel free to correct anythink.
+This is a personal hobby project. I'm still pretty new to Linux and shell-script. Feel free to correct anything.
