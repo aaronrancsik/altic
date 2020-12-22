@@ -15,7 +15,6 @@ curl --remote-name-all https://raw.githubusercontent.com/aaronrancsik/altic/mast
 read -p "Set permissions."
 chmod +x {setup,step_helper}.sh
 
-
 read -p "Execute the installer."
 clear
 ./setup.sh
