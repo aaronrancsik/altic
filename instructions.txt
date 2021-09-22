@@ -12,19 +12,19 @@ parted /dev/"$mydev" mkpart whitepart 261MiB 100% #Create secound partition on d
 mkfs.btrfs -m single -d single /dev/"$mydev"2 #Create btrfs filesystem on secound partition.
 fdisk -l #List all partitions.
 mount /dev/"$mydev"2 /mnt #Mount btrfs partition for create subvolumes.
-btrfs subvolume create /mnt/@root #Create the root subvolume.
+btrfs subvolume create /mnt/@ #Create the root subvolume.
 btrfs subvolume create /mnt/@home #Create the home subvolume.
-btrfs subvolume create /mnt/@log #Create the log subvolume.
-btrfs subvolume create /mnt/@pkg #Create the pkg subvolume.
+btrfs subvolume create /mnt/@var_log #Create the log subvolume.
 btrfs subvolume create /mnt/@tmp #Create the tmp subvolume.
+btrfs subvolume create /mnt/@swap #Create the swap subvolume.
 btrfs subvolume create /mnt/@snapshots #Create the snapshots subvolume.
 umount /mnt #Unmount btrfs partition to mount subvolumes instead.
-mount -o noatime,space_cache=v2,ssd,subvol=@root /dev/"$mydev"2 /mnt #First mount root subvolume.
-mkdir -p /mnt/{boot,home,var/log,var/cache/pacman/pkg,tmp,.snapshots} #Create the folders for the other subvolumes.
+mount -o noatime,space_cache=v2,ssd,subvol=@ /dev/"$mydev"2 /mnt #First mount root subvolume.
+mkdir -p /mnt/{boot,home,var/log,,tmp,.snapshots} #Create the folders for the other subvolumes.
 mount -o noatime,space_cache=v2,ssd,subvol=@home /dev/"$mydev"2 /mnt/home #Mount home subvolume.
 mount -o noatime,space_cache=v2,ssd,subvol=@snapshots /dev/"$mydev"2 /mnt/.snapshots #Mount snapshots subvolume.
-mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@log /dev/"$mydev"2 /mnt/var/log #Mount log subvolume.
-mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@pkg /dev/"$mydev"2 /mnt/var/cache/pacman/pkg #Mount pkg subvolume.
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@swap /dev/"$mydev"2 /mnt/swap #Mount log subvolume.
+mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@var_log /dev/"$mydev"2 /mnt/var/log #Mount log subvolume.
 mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@tmp /dev/"$mydev"2 /mnt/tmp #Mount tmp subvolume.
 mount /dev/"$mydev"1 /mnt/boot #Mount boot partition.
 pacstrap /mnt base linux linux-firmware neovim btrfs-progs #Install essential packages to selected new root directory. 
@@ -39,7 +39,7 @@ myloc="hu_HU.UTF-8 UTF-8" #Select another locale.
 sed -i "s/#$myloc/$myloc/" /etc/locale.gen #Uncomment selected in locale.gen
 locale-gen #Generate locale.
 echo LANG=en_US.UTF-8 >> /etc/locale.conf #Set system locale.
-myhostn=blackz #Select a hostname.
+myhostn=BlackI #Select a hostname.
 echo "$myhostn" > /etc/hostname #Set hostname.
 printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\t$myhostn" >> /etc/hosts #Write defaults to hosts file.
 pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers zsh git reflector xdg-utils xdg-user-dirs bash-completion #Install secondary essential packages.
