@@ -48,7 +48,7 @@ printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\
 sed -i "s/#Color/Color/" /etc/pacman.conf #Enable pacman color.
 echo "ILoveCandy" >> ./pacman.conf #PacMan
 pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers pkgstats #Install secondary essential packages.
-pacman -S zsh git reflector xdg-utils xdg-user-dirs zsh-completions #User tools
+pacman -S zsh grml-zsh-config git reflector xdg-utils xdg-user-dirs zsh-completions #User tools
 pacman -S snapper #Snapper BTRFS 
 pacman -S easyeffects gst-plugin-pipewire libpipewire02 manjaro-pipewire pipewire pipewire-alsa pipewire-docs pipewire-jack pipewire-media-session pipewire-pulse #Pipewire
 pacman -S libva-intel-driver vulkan-intel xf86-video-intel  intel-media-driver intel-gpu-tools #Intel iGPU 
