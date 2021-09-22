@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-branch="master"
+branch="dev"
 
 read -p "Remove possible leftover 'aaronbooster' folder."
 rm -rf aaronbooster
