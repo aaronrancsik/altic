@@ -2,7 +2,7 @@
 
 KEYS=us
 
-source ./lib/ui.sh
+source ./ui.sh
 
 function myloadkeys(){
     yesNoQuestion "exec: loadkeys $KEYS";

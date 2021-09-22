@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-source ./ui/ui.sh
+source ./ui.sh
 
 TCOLS=$(tput cols)
 CURRENT_FILENAME='instructions.txt'
