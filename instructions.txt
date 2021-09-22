@@ -1,6 +1,9 @@
 pacman -Syy reflector #Install reflector to rank mirrorlists.
 reflector -c Hungary -a 6 --sort rate --save /etc/pacman.d/mirrorlist #Set top 6 Hungarian server to mirrorlist file.
 pacman -Syy #Update database with the new mirrorlist.
+passwd #Set root password.
+systemctl enable --now sshd #Enable and start sshd
+ip a #view ip address
 lsblk #List all block devices.
 mydev=sda #Select device for install target.
 blkdiscard -f /dev/"$mydev" #Trim selected device, ALL IT'S DATA WILL GONE.
@@ -20,7 +23,7 @@ btrfs subvolume create /mnt/@swap #Create the swap subvolume.
 btrfs subvolume create /mnt/@snapshots #Create the snapshots subvolume.
 umount /mnt #Unmount btrfs partition to mount subvolumes instead.
 mount -o noatime,space_cache=v2,ssd,subvol=@ /dev/"$mydev"2 /mnt #First mount root subvolume.
-mkdir -p /mnt/{boot,home,var/log,,tmp,.snapshots} #Create the folders for the other subvolumes.
+mkdir -p /mnt/{boot,home,var/log,tmp,swap,.snapshots} #Create the folders for the other subvolumes.
 mount -o noatime,space_cache=v2,ssd,subvol=@home /dev/"$mydev"2 /mnt/home #Mount home subvolume.
 mount -o noatime,space_cache=v2,ssd,subvol=@snapshots /dev/"$mydev"2 /mnt/.snapshots #Mount snapshots subvolume.
 mount -o noatime,space_cache=v2,ssd,nodatacow,subvol=@swap /dev/"$mydev"2 /mnt/swap #Mount log subvolume.
@@ -42,16 +45,24 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf #Set system locale.
 myhostn=BlackI #Select a hostname.
 echo "$myhostn" > /etc/hostname #Set hostname.
 printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\t$myhostn" >> /etc/hosts #Write defaults to hosts file.
-pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers zsh git reflector xdg-utils xdg-user-dirs bash-completion #Install secondary essential packages.
+sed -i "s/#Color/Color/" /etc/pacman.conf #Enable pacman color.
+echo "ILoveCandy" >> ./pacman.conf #PacMan
+pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers pkgstats #Install secondary essential packages.
+pacman -S zsh git reflector xdg-utils xdg-user-dirs zsh-completions #User tools
+pacman -S snapper #Snapper BTRFS 
+pacman -S easyeffects gst-plugin-pipewire libpipewire02 manjaro-pipewire pipewire pipewire-alsa pipewire-docs pipewire-jack pipewire-media-session pipewire-pulse #Pipewire
+pacman -S libva-intel-driver vulkan-intel xf86-video-intel  intel-media-driver intel-gpu-tools #Intel iGPU 
+pacman -S nvidia libvdpau cuda cudnn nvidia-utils gwe #Nvidia GPU
+pacman -S gnome 
+systemctl enable gdm
 sed -i "s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf #Add btrfs hook to mkinitcpio.
 mkinitcpio -p linux #Create an initial ramdisk environment.
-passwd #Set root password.
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB #Install grub.
 grub-mkconfig -o /boot/grub/grub.cfg #Generate grub config.
 systemctl enable NetworkManager #Enable network service.
 myuser=aaron #Select new user name.
 useradd -m -G wheel -s /bin/zsh "$myuser" #Create new user.
 passwd "$myuser" #Set password for new user.
-EDITOR="sed -i s/#\x20%wheel\x20ALL=(ALL)\x20ALL/%wheel\x20ALL=(ALL)\x20ALL/" visudo #Uncomment Wheel's line to grant access to sudo with password.
+echo "%wheel ALL=(ALL) ALL" | EDITOR="tee -a" visudo #grant sudo to wheel group
 exit #Exit from chroot back to installer.
 umount -a #Unmount all devices.
