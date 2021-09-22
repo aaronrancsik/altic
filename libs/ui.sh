@@ -2,7 +2,7 @@
 
 PRIMARYBG="7"
 PRIMARYFG="7"
-SECONDARYFG="8"
+SECONDARYFG="2"
 
 function send2pane(){
     tmux send-keys -t install:0.0 "$1"
@@ -31,12 +31,12 @@ function printfProgressState(){
 function printfh1(){
     local TCOLS=$(getWidth)
     local SPACE=$(getSpace "$1")
-
+    
     tput setab $PRIMARYBG
     tput bold
     printf '%*s'"$1" $SPACE
     printf '%*s\n' $(($TCOLS - ( $SPACE + ${#1} ) ))
-
+    
     tput sgr 0
 }
 
@@ -57,12 +57,12 @@ function printProgress(){
     local BAR="$BAR_BEGIN""$STR""$BAR_END"
     
     local PROGRES_NUMBER=$((${#BAR}*$PERCENT/$TOT))
-
+    
     tput setaf $SECONDARYFG
     tput bold
     tput smul
     printf %s "${BAR:0:$PROGRES_NUMBER}"
-
+    
     tput sgr0
     tput setaf $PRIMARYFG
     tput bold
@@ -74,8 +74,8 @@ function printProgress(){
 function printfh3(){
     local TCOLS=$(getWidth)
     local SPACE=$(getSpace "$1")
-
-    printf '%*s'"$1" $SPACE 
+    
+    printf '%*s'"$1" $SPACE
     printf '%*s' $(( $TCOLS - ( $SPACE + ${#1} ) ))
     tput sgr 0
 }
@@ -88,9 +88,9 @@ function yesNoQuestion(){
     local ans="a"
     while [[ "$ans" != "Y" && "$ans" != "N" && "$ans" != ""  ]]; do
         tput bold
-        printf "$1 [Y/n] " 
+        printf "$1 [Y/n] "
         read ans
-        ans="${ans^^}" 
+        ans="${ans^^}"
     done
     if [[ "$ans" == "Y" || "$ans" == "" ]]; then
         return 0;

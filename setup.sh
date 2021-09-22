@@ -2,7 +2,7 @@
 
 KEYS=us
 
-source ./lib.sh
+source ./lib/ui.sh
 
 function myloadkeys(){
     yesNoQuestion "exec: loadkeys $KEYS";
@@ -22,15 +22,15 @@ function updateClock(){
 function installTmux(){
     yesNoQuestion "exec: pacman -Syy tmux";
     if [[ $? -eq "0" ]]; then
-        pacman -Syy tmux    
+        pacman -Syy tmux
     fi
 }
 
 function main(){
     echo "Prepare ALTIC..."
-    myloadkeys
-    updateClock
-    installTmux
+    #myloadkeys
+    #updateClock
+    #installTmux
     yesNoQuestion "Start ALTIC Tmux session called 'install'"
     if [[ $? -eq "0" ]]; then
         tmux -f tmux.conf new -s install \; split-window -v -d './step_helper.sh'
