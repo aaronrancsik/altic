@@ -3,7 +3,8 @@
 source ./ui.sh
 
 TCOLS=$(tput cols)
-CURRENT_FILENAME='instructions.txt'
+DEFAULT_INST='instructions.txt'
+CURRENT_FILENAME= "${1:-DEFAULT_INST}" 
 
 NLINE=$(wc -l < "$CURRENT_FILENAME")
 i="1"

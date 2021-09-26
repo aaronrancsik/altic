@@ -1,0 +1,52 @@
+sudo pacman -S --noconfirm alacritty #app
+sudo pacman -S --noconfirm arduino #app
+sudo pacman -S --noconfirm blender #app 3d
+sudo pacman -S --noconfirm cpu-x #app
+sudo pacman -S --noconfirm darktable #app
+sudo pacman -S --noconfirm deluge-gtk #app 
+sudo pacman -S --noconfirm dynamic-wallpaper-editor #app
+sudo pacman -S --noconfirm filezilla #app
+sudo pacman -S --noconfirm flameshot #app screenshot
+sudo pacman -S --noconfirm freecad #app
+sudo pacman -S --noconfirm gcolor3 #app color picker
+sudo pacman -S --noconfirm gource #app git visualizer
+sudo pacman -S --noconfirm gparted #app
+sudo pacman -S --noconfirm gpx-viewer #app gps track viewer
+sudo pacman -S --noconfirm gpxsee #app gps track viewer
+sudo pacman -S --noconfirm gsmartcontrol #app ssh SMART 
+sudo pacman -S --noconfirm handbrake #app video
+sudo pacman -S --noconfirm hardinfo #app hw info
+sudo pacman -S --noconfirm heaptrack #app 
+sudo pacman -S --noconfirm inkscape #app
+sudo pacman -S --noconfirm julia #app
+sudo pacman -S --noconfirm kdenlive #app
+sudo pacman -S --noconfirm keepassxc #app
+sudo pacman -S --noconfirm kicad #app
+sudo pacman -S --noconfirm krita #app
+sudo pacman -S --noconfirm ktouch #app keyboard
+sudo pacman -S --noconfirm kvantum-qt5 #app for gtk users to manage qt apps themes
+sudo pacman -S --noconfirm librecad #app
+sudo pacman -S --noconfirm libreoffice-fresh #app
+sudo pacman -S --noconfirm libreoffice-fresh-hu #app language
+sudo pacman -S --noconfirm linssid #app wifi scanner
+sudo pacman -S --noconfirm mkvtoolnix-gui #app film merge
+sudo pacman -S --noconfirm mpv #app
+sudo pacman -S --noconfirm obs-studio #app
+sudo pacman -S --noconfirm octave #app free matlab
+sudo pacman -S --noconfirm okular #app nice pdf reader
+sudo pacman -S --noconfirm onlyoffice-desktopeditors #app office
+sudo pacman -S --noconfirm pavucontrol #app advanced sound settings
+sudo pacman -S --noconfirm peek #app simple screen record
+sudo pacman -S --noconfirm qmk #app keyboard
+sudo pacman -S --noconfirm rawtherapee #app 
+sudo pacman -S --noconfirm remmina #app remote desktop
+sudo pacman -S --noconfirm screenkey #app show keys 
+sudo pacman -S --noconfirm songrec #app shazam
+sudo pacman -S --noconfirm tiled #app
+sudo pacman -S --noconfirm vlc #app
+sudo pacman -S --noconfirm wireshark-qt #app 
+sudo pacman -S --noconfirm barrier #shared mouse
+sudo pacman -S --noconfirm etcher #ap
+sudo pacman -S --noconfirm guvcview # advanced webcam
+sudo pacman -S --noconfirm imagewriter #useful win iso writer
+sudo pacman -S --noconfirm polari #irc client

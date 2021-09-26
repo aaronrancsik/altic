@@ -1,0 +1,273 @@
+alacritty #app
+arduino #app
+blender #app 3d
+cpu-x #app
+darktable #app
+deluge-gtk #app 
+dynamic-wallpaper-editor #app
+filezilla #app
+flameshot #app screenshot
+freecad #app
+gcolor3 #app color picker
+gource #app git visualizer
+gparted #app
+gpx-viewer #app gps track viewer
+gpxsee #app gps track viewer
+gsmartcontrol #app ssh SMART 
+handbrake #app video
+hardinfo #app hw info
+heaptrack #app 
+inkscape #app
+julia #app
+kdenlive #app
+keepassxc #app
+kicad #app
+krita #app
+ktouch #app keyboard
+kvantum-qt5 #app for gtk users to manage qt apps themes
+librecad #app
+libreoffice-fresh #app
+libreoffice-fresh-hu #app language
+linssid #app wifi scanner
+mkvtoolnix-gui #app film merge
+mpv #app
+obs-studio #app
+octave #app free matlab
+okular #app nice pdf reader
+onlyoffice-desktopeditors #app office
+pavucontrol #app advanced sound settings
+peek #app simple screen record
+qmk #app keyboard
+rawtherapee #app 
+remmina #app remote desktop
+screenkey #app show keys 
+songrec #app shazam
+tiled #app
+vlc #app
+wireshark-qt #app 
+barrier #shared mouse
+etcher #ap
+guvcview # advanced webcam
+imagewriter #useful win iso writer
+polari #irc client
+
+rocksndiamonds #app game 
+
+qutebrowser #app broser 
+python-adblock #qt optional
+torbrowser-launcher #tor
+firefox #app browser
+firefox-i18n-en-us #app browser
+firefox-tridactyl # app browser
+
+aspell-en #language
+aspell-hu #language
+hunspell-hu #language
+hyphen-en #language
+hyphen-hu #language
+languagetool #legacy language chekker?
+mythes-en #lang thesaurus
+mythes-hu #lang thesaurus
+
+autoconf #cpp
+automake #cpp
+boost # cpp
+catch2 #cpp test
+ccache #cpp
+cmake # cpp 
+cppcheck #cpp code alanlysis
+cuda # cpp
+cudnn #cpp
+extra-cmake-modules #cpp
+gcc # cpp
+gcc-libs #cpp
+gcc48 #cpp
+gdb #cpp
+glibc #cpp
+google-glog # cpp
+imath #cpp
+libc++ #cpp
+lld #cpp
+lldb #cpp
+make #cpp
+
+nodejs #js
+npm #js
+typescript #js
+yarn #js
+jq #json parser
+
+aspnet-runtime # csharp
+aspnet-targeting-pack # csharp
+dotnet-host #csharp
+dotnet-runtime #csharp
+dotnet-sdk #csharp
+dotnet-targeting-pack #csharp
+doxygen #csharp
+doxygen-docs #csharp
+
+jdk-openjdk #java
+jdk8-openjdk #java
+maven #java
+
+gtksourceview-pkgbuild # gnome syntax hl
+chrome-gnome-shell # integrate gnome extensions
+gtksourceview3 # gnome syntax hl
+nautilus-admin #gnome ext
+nautilus-empty-file #gnome ext
+nautilus-image-converter #gnome ext
+nautilus-terminal #gnome ext
+raw-thumbnailer #gnome ext
+seahorse #gnome secret
+gthumb #my gnome image viewer
+
+biber #for biblatex
+bibletime #gui bible
+texinfo #latex tuffs
+texlive-bibtexextra
+texlive-fontsextra
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-latexextra
+texlive-music
+texlive-pictures
+texlive-pstricks
+texlive-publishers
+texlive-science
+texstudio
+
+inter-font #font
+ttf-bitstream-vera #font
+ttf-dejavu #font
+ttf-inconsolata #font
+ttf-indic-otf #font
+ttf-jetbrains-mono #font
+ttf-liberation #font
+ttf-monoid  #font
+ttf-roboto #font
+ttf-ubuntu-font-family #font
+noto-fonts
+noto-fonts-emoji
+powerline-fonts
+terminus-font
+ttc-iosevka 
+
+docker # dev
+
+cups #printer
+
+dash #simple shell
+
+mariadb #mysql
+mysql-workbench
+
+flatpak #flatpak
+acpi #util
+acpica # acpi compiler
+android-tools #android driver
+asciinema # rec terminal
+bat #cat replacement
+binwalk #nice bin checker
+ddcutil # external monitor brighness
+detox # trash filename cleaner
+dfu-programmer # chip programmer
+dfu-util #chip programmer
+diffutils #patch file creator
+dmg2img # converter
+fd #finder
+glances # htop like 
+inotify-tools #simple notify api
+intel-gpu-tools # usefull gpu tools
+inetutils #fpt and stuff 
+evtest # input devide query
+figlet #big char 
+inxi #get system info cli
+iotop # cli top like for io
+iperf3 #ip speed test in local network
+iputils #useful ip stuffs
+lostfiles # find orphan files
+man-db #man files
+man-pages #man pages
+lsof #list open files
+mediainfo #info about video
+neofetch #the most important program
+nmap #network tester
+nnn #terminal file manager
+nasm #assembler
+openbsd-netcat #nice tcp/ip cat
+patch #apply patch
+pax-utils #file sec schecker
+pciutils # pci bus tools
+pkgfile #useful metadata explorer
+pngcrush #png tool
+powertop #top like for power
+progress # command progress
+pv #nice pipeline monitor
+rclone #nice cli clud mounter like gdrive
+ripgrep #seachtool
+rsync # the best copy tool
+s-tui # top like monitor
+scour #svg
+spectre-meltdown-checker # nice tool
+speedtest-cli # nice tool
+strace #debug
+tcpdump #packaet analizer
+the_silver_searcher #code search
+tldr #nice tool
+tmux #tmux
+trash-cli #nice cli
+tree #nice tool
+typespeed # keyboard
+vbindiff #diff
+wget #tool
+xclip #copy 
+xcape #nice press and hold modifier
+xorg-xev #xev useful input check
+
+opencl-nvidia  #nvidia
+nvtop # top for nvidia
+
+vulkan-intel #intel gpu
+vulkan-tools #gpu
+mesa-vdpau #gpu acc
+
+alsa-firmware # req manjaro alsa
+alsa-utils # req manjro alsa
+atool #archive manager
+b43-fwcutter # firmware extractor tool
+bash-bats #bash script unittester
+bind #some of my obsecure script use it for something
+bison #yacc parser
+connman #opt for stuffs
+curlftpfs #fs for ftp fuse libcurl
+dhclient #opt for network
+dhcpcd #opt for network
+dnsmasq #opt for network
+e2fsprogs # ext utils
+ecryptfs-utils # utils
+exfat-utils #util
+f2fs-tools #util
+findutils #utils
+fwupd #firmware
+i2c-tools #set of i2c tools
+jfsutils #fs utils
+libtiff4 #legacy
+libvips #img process lib
+lvm2 #lvm manager
+mesa-demos #glxgears
+nfs-utils #network fs
+ntfs-3g #ntfs 
+ntp #net time protocol
+openexr #exr support
+playerctl #bluetooth headset media buttons
+reiserfsprogs #opt for btrfs-prgs
+unoconv #doc conv
+usb_modeswitch #switchable usb
+usbutils # query usb
+xdg-utils #maybe
+xf86-input-evdev #maybe
+xf86-input-void #maybe
+xfsprogs #xfs
+xorg-twm #maybe
+xorg-xwininfo #maybe

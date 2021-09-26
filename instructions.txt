@@ -46,13 +46,14 @@ myhostn=BlackI #Select a hostname.
 echo "$myhostn" > /etc/hostname #Set hostname.
 printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$myhostn.localdomain\t$myhostn" >> /etc/hosts #Write defaults to hosts file.
 sed -i "s/#Color/Color/" /etc/pacman.conf #Enable pacman color.
-echo "ILoveCandy" >> ./pacman.conf #PacMan
+grep -q "ILoveCandy" /etc/pacman.conf || sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+sed -i "s/-j2/-j8/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf #Enable multi thread for package compile
 pacman -S grub grub-btrfs efibootmgr efivar os-prober mtools dosfstools intel-ucode networkmanager base-devel linux-headers pkgstats #Install secondary essential packages.
 pacman -S zsh grml-zsh-config git reflector xdg-utils xdg-user-dirs zsh-completions #User tools
 pacman -S snapper #Snapper BTRFS 
-pacman -S easyeffects gst-plugin-pipewire libpipewire02 manjaro-pipewire pipewire pipewire-alsa pipewire-docs pipewire-jack pipewire-media-session pipewire-pulse #Pipewire
+pacman -S easyeffects gst-plugin-pipewire libpipewire02 pipewire pipewire-alsa pipewire-docs pipewire-jack pipewire-media-session pipewire-pulse #Pipewire
 pacman -S libva-intel-driver vulkan-intel xf86-video-intel  intel-media-driver intel-gpu-tools #Intel iGPU 
-pacman -S nvidia libvdpau cuda cudnn nvidia-utils gwe #Nvidia GPU
+pacman -S nvidia libvdpau cuda cudnn nvidia-utils #Nvidia GPU
 pacman -S gnome 
 systemctl enable gdm
 sed -i "s/MODULES=()/MODULES=(btrfs)/" /etc/mkinitcpio.conf #Add btrfs hook to mkinitcpio.

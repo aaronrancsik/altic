@@ -28,12 +28,12 @@ function installTmux(){
 
 function main(){
     echo "Prepare ALTIC..."
-    #myloadkeys
-    #updateClock
-    #installTmux
+    myloadkeys
+    updateClock
+    installTmux
     yesNoQuestion "Start ALTIC Tmux session called 'install'"
     if [[ $? -eq "0" ]]; then
-        tmux -f tmux.conf new -s install \; split-window -v -d './step_helper.sh'
+        tmux -f tmux.conf new -s install \; split-window -v -d './step_helper.sh' $1
     fi
 }
 
