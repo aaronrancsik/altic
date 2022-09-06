@@ -1,7 +1,6 @@
 sudo pacman -S --noconfirm alacritty #app
 sudo pacman -S --noconfirm arduino #app
 sudo pacman -S --noconfirm blender #app 3d
-sudo pacman -S --noconfirm cpu-x #app
 sudo pacman -S --noconfirm darktable #app
 sudo pacman -S --noconfirm deluge-gtk #app 
 sudo pacman -S --noconfirm dynamic-wallpaper-editor #app
@@ -34,7 +33,6 @@ sudo pacman -S --noconfirm mpv #app
 sudo pacman -S --noconfirm obs-studio #app
 sudo pacman -S --noconfirm octave #app free matlab
 sudo pacman -S --noconfirm okular #app nice pdf reader
-sudo pacman -S --noconfirm onlyoffice-desktopeditors #app office
 sudo pacman -S --noconfirm pavucontrol #app advanced sound settings
 sudo pacman -S --noconfirm peek #app simple screen record
 sudo pacman -S --noconfirm qmk #app keyboard

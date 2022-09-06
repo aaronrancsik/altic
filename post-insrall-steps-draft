@@ -1,0 +1,155 @@
+ sudo pacman -S gnome-extra  
+ sudo pacman -S nvidia-settings
+ sudo pacman -S firefox
+ sudo pacman -S htop
+ sudo pacman -S nvtop 
+# set keyboard source int en
+ noglob gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
+ 
+ 
+ systemctl enable --now bluetooth
+ 
+ git clone https://aur.archlinux.org/paru-bin.git
+ cd paru-bin
+ makepkg -si
+ 
+ paru -S chrome-gnome-shell
+ 
+ xhost +SI:localuser:gdm #grant GDM the right to access the X server
+ /etc/gdm/custom.conf #uncomment WaylandEnable=false #xorg is the default session
+ 
+ #Enable tap to click in gdm
+ sudo mkdir -p /etc/dconf/db/gdm.d/
+ /etc/dconf/db/gdm.d/06-tap-to-click 
+ #add
+ [org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+
+# update gdm database
+sudo dconf update
+
+# enable nigh light in gdm
+sudo -u gdm dbus-launch gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true   
+
+#spaw escape
+./gsettings-add.sh "org.gnome.desktop.input-sources" "xkb-options" "caps:swapescape"
+
+sudo pacman -S nvidia-prime
+
+#add kernel param
+sudo nvim /etc/default/grub
+nvidia-drm.modeset=1
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+
+sudo pacman -S acpi_call
+
+
+sudo nvim /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+#add
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection
+
+sudo nvim /usr/share/gdm/greeter/autostart/optimus.desktop
+sudo nvim /etc/xdg/autostart/optimus.desktop  
+sudo nvim /usr/local/share/
+ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop    
+#addln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop    
+[Desktop Entry]
+Type=Application
+Name=Optimus
+Exec=sh -c "xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto"
+NoDisplay=true
+X-GNOME-Autostart-Phase=DisplayServer
+
+
+paru -S auto-cpufreq
+systemctl enable --now  auto-cpufreq.service
+
+sudo pacman -S thermald
+sudo systemctl enable --now thermald
+
+sudo pacman -S libsmbios
+
+#disable watch dog
+sudo nvim /etc/default/grub
+#add kernel param
+nowatchdog
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+/etc/modprobe.d/nowd.conf
+blacklist iTCO_wdt
+
+#MAGICCCC strange flicker is gone YEAHHHHHHHHHH only work with intel modsetting and cause tearing
+sudo nvim /etc/default/grub
+#add kernel param
+i915.enable_rc6=0 #no needed 
+i915.enable_psr=0
+
+
+#even drafter
+ff save restore
+justperfect
+nightlight on
+automatic date and time
+formats magyar
+sound 2.1
+
+sudo pacman -S fwupd 
+sudo pacman -S firmware
+
+#append to grub change res
+GRUB_GFXMODE=1024x768x32,auto
+GRUB_GFXPAYLOAD_LINUX=keep
+
+# firefox acceleration
+https://wiki.archlinux.org/title/firefox#Hardware_video_acceleration
+
+#ff add gnome extension plugin
+
+paru  -S adriconf-git
+
+
+paru -S system76-power 
+sudo systemctl enable --now system76-power.service
+
+paru -S touchegg
+sudo systemctl enable --now touchegg
+paru -S touche
+paru -S libinput-gestures
+paru -S gesture
+
+#install gnome extensions
+X11 Gestures by JoseExposito
+Volume Mixer by alexhofbauer
+User Themes by fmuellner
+Night Theme Switcher by rmnvgr
+Just Perfection by JustPerfection
+GNOME Fuzzy App Search by thecheesegromit
+Blur my Shell by aunetx
+AppIndicator and KStatusNotifierItem Support by 3v1n0
+
+
+sudo pacman -S ttf-jetbrains-mono
+#tweak set mono font
+
+sudo pacman -S alacritty
+paru -Ss fzf rsync xdotool clang
+
+#shortcuts import
+
+gsettings set org.gnome.shell.window-switcher current-workspace-only false

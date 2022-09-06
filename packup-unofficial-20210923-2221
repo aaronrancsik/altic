@@ -1,3 +1,4 @@
+paru -S --noconfirm onlyoffice-bin
 anyk
 apindex
 archlinux-java-run
@@ -22,7 +23,6 @@ fiji-bin
 firefox-tridactyl-native
 flann
 flatseal
-
 flexbv-unstable-bin
 fonts-meta-base
 fonts-meta-extended-lt

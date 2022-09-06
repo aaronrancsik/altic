@@ -1,0 +1,203 @@
+sudo pacman -S --noconfirm rocksndiamonds #app game 
+sudo pacman -S --noconfirm qutebrowser #app broser 
+sudo pacman -S --noconfirm python-adblock #qt optional
+sudo pacman -S --noconfirm torbrowser-launcher #tor
+sudo pacman -S --noconfirm firefox #app browser
+sudo pacman -S --noconfirm firefox-i18n-en-us #app browser
+sudo pacman -S --noconfirm firefox-tridactyl # app browser
+sudo pacman -S --noconfirm aspell-en #language
+sudo pacman -S --noconfirm aspell-hu #language
+sudo pacman -S --noconfirm hunspell-hu #language
+sudo pacman -S --noconfirm hyphen-en #language
+sudo pacman -S --noconfirm hyphen-hu #language
+sudo pacman -S --noconfirm languagetool #legacy language chekker?
+sudo pacman -S --noconfirm mythes-en #lang thesaurus
+sudo pacman -S --noconfirm mythes-hu #lang thesaurus
+sudo pacman -S --noconfirm autoconf #cpp
+sudo pacman -S --noconfirm automake #cpp
+sudo pacman -S --noconfirm boost # cpp
+sudo pacman -S --noconfirm catch2 #cpp test
+sudo pacman -S --noconfirm ccache #cpp
+sudo pacman -S --noconfirm cmake # cpp 
+sudo pacman -S --noconfirm cppcheck #cpp code alanlysis
+sudo pacman -S --noconfirm cuda # cpp
+sudo pacman -S --noconfirm cudnn #cpp
+sudo pacman -S --noconfirm extra-cmake-modules #cpp
+sudo pacman -S --noconfirm gcc # cpp
+sudo pacman -S --noconfirm gcc-libs #cpp
+sudo pacman -S --noconfirm gcc48 #cpp
+sudo pacman -S --noconfirm gdb #cpp
+sudo pacman -S --noconfirm glibc #cpp
+sudo pacman -S --noconfirm google-glog # cpp
+sudo pacman -S --noconfirm imath #cpp
+sudo pacman -S --noconfirm libc++ #cpp
+sudo pacman -S --noconfirm lld #cpp
+sudo pacman -S --noconfirm lldb #cpp
+sudo pacman -S --noconfirm make #cpp
+sudo pacman -S --noconfirm nodejs #js
+sudo pacman -S --noconfirm npm #js
+sudo pacman -S --noconfirm typescript #js
+sudo pacman -S --noconfirm yarn #js
+sudo pacman -S --noconfirm jq #json parser
+sudo pacman -S --noconfirm aspnet-runtime # csharp
+sudo pacman -S --noconfirm aspnet-targeting-pack # csharp
+sudo pacman -S --noconfirm dotnet-host #csharp
+sudo pacman -S --noconfirm dotnet-runtime #csharp
+sudo pacman -S --noconfirm dotnet-sdk #csharp
+sudo pacman -S --noconfirm dotnet-targeting-pack #csharp
+sudo pacman -S --noconfirm doxygen #csharp
+sudo pacman -S --noconfirm doxygen-docs #csharp
+sudo pacman -S --noconfirm jdk-openjdk #java
+sudo pacman -S --noconfirm jdk8-openjdk #java
+sudo pacman -S --noconfirm maven #java
+sudo pacman -S --noconfirm gtksourceview-pkgbuild # gnome syntax hl
+sudo pacman -S --noconfirm chrome-gnome-shell # integrate gnome extensions
+sudo pacman -S --noconfirm gtksourceview3 # gnome syntax hl
+sudo pacman -S --noconfirm nautilus-admin #gnome ext
+sudo pacman -S --noconfirm nautilus-empty-file #gnome ext
+sudo pacman -S --noconfirm nautilus-image-converter #gnome ext
+sudo pacman -S --noconfirm nautilus-terminal #gnome ext
+sudo pacman -S --noconfirm raw-thumbnailer #gnome ext
+sudo pacman -S --noconfirm seahorse #gnome secret
+sudo pacman -S --noconfirm gthumb #my gnome image viewer
+sudo pacman -S --noconfirm biber #for biblatex
+sudo pacman -S --noconfirm bibletime #gui bible
+sudo pacman -S --noconfirm texinfo #latex tuffs
+sudo pacman -S --noconfirm texlive-bibtexextra
+sudo pacman -S --noconfirm texlive-fontsextra
+sudo pacman -S --noconfirm texlive-formatsextra
+sudo pacman -S --noconfirm texlive-games
+sudo pacman -S --noconfirm texlive-humanities
+sudo pacman -S --noconfirm texlive-latexextra
+sudo pacman -S --noconfirm texlive-music
+sudo pacman -S --noconfirm texlive-pictures
+sudo pacman -S --noconfirm texlive-pstricks
+sudo pacman -S --noconfirm texlive-publishers
+sudo pacman -S --noconfirm texlive-science
+sudo pacman -S --noconfirm texstudio
+sudo pacman -S --noconfirm inter-font #font
+sudo pacman -S --noconfirm ttf-bitstream-vera #font
+sudo pacman -S --noconfirm ttf-dejavu #font
+sudo pacman -S --noconfirm ttf-inconsolata #font
+sudo pacman -S --noconfirm ttf-indic-otf #font
+sudo pacman -S --noconfirm ttf-jetbrains-mono #font
+sudo pacman -S --noconfirm ttf-liberation #font
+sudo pacman -S --noconfirm ttf-monoid  #font
+sudo pacman -S --noconfirm ttf-roboto #font
+sudo pacman -S --noconfirm ttf-ubuntu-font-family #font
+sudo pacman -S --noconfirm noto-fonts
+sudo pacman -S --noconfirm noto-fonts-emoji
+sudo pacman -S --noconfirm powerline-fonts
+sudo pacman -S --noconfirm terminus-font
+sudo pacman -S --noconfirm ttc-iosevka 
+sudo pacman -S --noconfirm docker # dev
+sudo pacman -S --noconfirm cups #printer
+sudo pacman -S --noconfirm dash #simple shell
+sudo pacman -S --noconfirm mariadb #mysql
+sudo pacman -S --noconfirm mysql-workbench
+sudo pacman -S --noconfirm flatpak #flatpak
+sudo pacman -S --noconfirm acpi #util
+sudo pacman -S --noconfirm acpica # acpi compiler
+sudo pacman -S --noconfirm android-tools #android driver
+sudo pacman -S --noconfirm asciinema # rec terminal
+sudo pacman -S --noconfirm bat #cat replacement
+sudo pacman -S --noconfirm binwalk #nice bin checker
+sudo pacman -S --noconfirm ddcutil # external monitor brighness
+sudo pacman -S --noconfirm detox # trash filename cleaner
+sudo pacman -S --noconfirm dfu-programmer # chip programmer
+sudo pacman -S --noconfirm dfu-util #chip programmer
+sudo pacman -S --noconfirm diffutils #patch file creator
+sudo pacman -S --noconfirm dmg2img # converter
+sudo pacman -S --noconfirm fd #finder
+sudo pacman -S --noconfirm glances # htop like 
+sudo pacman -S --noconfirm inotify-tools #simple notify api
+sudo pacman -S --noconfirm intel-gpu-tools # usefull gpu tools
+sudo pacman -S --noconfirm inetutils #fpt and stuff 
+sudo pacman -S --noconfirm evtest # input devide query
+sudo pacman -S --noconfirm figlet #big char 
+sudo pacman -S --noconfirm inxi #get system info cli
+sudo pacman -S --noconfirm iotop # cli top like for io
+sudo pacman -S --noconfirm iperf3 #ip speed test in local network
+sudo pacman -S --noconfirm iputils #useful ip stuffs
+sudo pacman -S --noconfirm lostfiles # find orphan files
+sudo pacman -S --noconfirm man-db #man files
+sudo pacman -S --noconfirm man-pages #man pages
+sudo pacman -S --noconfirm lsof #list open files
+sudo pacman -S --noconfirm mediainfo #info about video
+sudo pacman -S --noconfirm neofetch #the most important program
+sudo pacman -S --noconfirm nmap #network tester
+sudo pacman -S --noconfirm nnn #terminal file manager
+sudo pacman -S --noconfirm nasm #assembler
+sudo pacman -S --noconfirm openbsd-netcat #nice tcp/ip cat
+sudo pacman -S --noconfirm patch #apply patch
+sudo pacman -S --noconfirm pax-utils #file sec schecker
+sudo pacman -S --noconfirm pciutils # pci bus tools
+sudo pacman -S --noconfirm pkgfile #useful metadata explorer
+sudo pacman -S --noconfirm pngcrush #png tool
+sudo pacman -S --noconfirm powertop #top like for power
+sudo pacman -S --noconfirm progress # command progress
+sudo pacman -S --noconfirm pv #nice pipeline monitor
+sudo pacman -S --noconfirm rclone #nice cli clud mounter like gdrive
+sudo pacman -S --noconfirm ripgrep #seachtool
+sudo pacman -S --noconfirm rsync # the best copy tool
+sudo pacman -S --noconfirm s-tui # top like monitor
+sudo pacman -S --noconfirm scour #svg
+sudo pacman -S --noconfirm spectre-meltdown-checker # nice tool
+sudo pacman -S --noconfirm speedtest-cli # nice tool
+sudo pacman -S --noconfirm strace #debug
+sudo pacman -S --noconfirm tcpdump #packaet analizer
+sudo pacman -S --noconfirm the_silver_searcher #code search
+sudo pacman -S --noconfirm tldr #nice tool
+sudo pacman -S --noconfirm tmux #tmux
+sudo pacman -S --noconfirm trash-cli #nice cli
+sudo pacman -S --noconfirm tree #nice tool
+sudo pacman -S --noconfirm typespeed # keyboard
+sudo pacman -S --noconfirm vbindiff #diff
+sudo pacman -S --noconfirm wget #tool
+sudo pacman -S --noconfirm xclip #copy 
+sudo pacman -S --noconfirm xcape #nice press and hold modifier
+sudo pacman -S --noconfirm xorg-xev #xev useful input check
+sudo pacman -S --noconfirm opencl-nvidia  #nvidia
+sudo pacman -S --noconfirm nvtop # top for nvidia
+sudo pacman -S --noconfirm vulkan-intel #intel gpu
+sudo pacman -S --noconfirm vulkan-tools #gpu
+sudo pacman -S --noconfirm mesa-vdpau #gpu acc
+sudo pacman -S --noconfirm alsa-firmware # req manjaro alsa
+sudo pacman -S --noconfirm alsa-utils # req manjro alsa
+sudo pacman -S --noconfirm atool #archive manager
+sudo pacman -S --noconfirm b43-fwcutter # firmware extractor tool
+sudo pacman -S --noconfirm bash-bats #bash script unittester
+sudo pacman -S --noconfirm bind #some of my obsecure script use it for something
+sudo pacman -S --noconfirm bison #yacc parser
+sudo pacman -S --noconfirm connman #opt for stuffs
+sudo pacman -S --noconfirm curlftpfs #fs for ftp fuse libcurl
+sudo pacman -S --noconfirm dhclient #opt for network
+sudo pacman -S --noconfirm dhcpcd #opt for network
+sudo pacman -S --noconfirm dnsmasq #opt for network
+sudo pacman -S --noconfirm e2fsprogs # ext utils
+sudo pacman -S --noconfirm ecryptfs-utils # utils
+sudo pacman -S --noconfirm exfat-utils #util
+sudo pacman -S --noconfirm f2fs-tools #util
+sudo pacman -S --noconfirm findutils #utils
+sudo pacman -S --noconfirm fwupd #firmware
+sudo pacman -S --noconfirm i2c-tools #set of i2c tools
+sudo pacman -S --noconfirm jfsutils #fs utils
+sudo pacman -S --noconfirm libtiff4 #legacy
+sudo pacman -S --noconfirm libvips #img process lib
+sudo pacman -S --noconfirm lvm2 #lvm manager
+sudo pacman -S --noconfirm mesa-demos #glxgears
+sudo pacman -S --noconfirm nfs-utils #network fs
+sudo pacman -S --noconfirm ntfs-3g #ntfs 
+sudo pacman -S --noconfirm ntp #net time protocol
+sudo pacman -S --noconfirm openexr #exr support
+sudo pacman -S --noconfirm playerctl #bluetooth headset media buttons
+sudo pacman -S --noconfirm reiserfsprogs #opt for btrfs-prgs
+sudo pacman -S --noconfirm unoconv #doc conv
+sudo pacman -S --noconfirm usb_modeswitch #switchable usb
+sudo pacman -S --noconfirm usbutils # query usb
+sudo pacman -S --noconfirm xdg-utils #maybe
+sudo pacman -S --noconfirm xf86-input-evdev #maybe
+sudo pacman -S --noconfirm xf86-input-void #maybe
+sudo pacman -S --noconfirm xfsprogs #xfs
+sudo pacman -S --noconfirm xorg-twm #maybe
+sudo pacman -S --noconfirm xorg-xwininfo #maybe
