@@ -153,3 +153,5 @@ paru -Ss fzf rsync xdotool clang
 #shortcuts import
 
 gsettings set org.gnome.shell.window-switcher current-workspace-only false
+
+playerctl
